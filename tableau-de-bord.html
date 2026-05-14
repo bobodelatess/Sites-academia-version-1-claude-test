@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Assistants IA — StudIA</title>
+  <title>Tableau de bord — StudIA</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -17,11 +17,12 @@
         <a href="index.html">Accueil</a>
         <a href="cours.html">Cours</a>
         <a href="exercices.html">Exercices</a>
-        <a href="assistants.html" class="active">Assistants IA</a>
-        <a href="tableau-de-bord.html">Tableau de bord</a>
+        <a href="assistants.html">Assistants IA</a>
+        <a href="tableau-de-bord.html" class="active">Tableau de bord</a>
       </nav>
       <div class="nav-actions">
         <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème">🌙</button>
+        <a href="assistants.html" class="btn btn-primary">Démarrer</a>
       </div>
     </div>
   </header>
@@ -29,14 +30,14 @@
   <main>
     <section class="page-head">
       <div class="container">
-        <span class="eyebrow">Tuteurs spécialisés</span>
-        <h1>Choisissez votre assistant</h1>
-        <p class="lead">Chaque assistant est calibré pour sa matière&nbsp;: vocabulaire, méthodologie, exemples typiques du programme. Sélectionnez-en un pour commencer à discuter.</p>
+        <span class="eyebrow">Mon activité</span>
+        <h1>Tableau de bord</h1>
+        <p class="lead">Suivez votre progression, vos cours consultés, et l'usage de chaque tuteur IA. Toutes les données restent dans votre navigateur.</p>
       </div>
     </section>
 
     <section class="container">
-      <div class="assistant-grid" id="assistant-list"></div>
+      <div id="dashboard"></div>
     </section>
   </main>
 
@@ -46,6 +47,6 @@
 
   <script src="data.js"></script>
   <script src="app.js"></script>
-  <script>renderAssistants();</script>
+  <script>renderDashboard();</script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Assistants IA — StudIA</title>
+  <title>Fiche de cours — StudIA</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -15,29 +15,20 @@
       </a>
       <nav class="main-nav">
         <a href="index.html">Accueil</a>
-        <a href="cours.html">Cours</a>
+        <a href="cours.html" class="active">Cours</a>
         <a href="exercices.html">Exercices</a>
-        <a href="assistants.html" class="active">Assistants IA</a>
+        <a href="assistants.html">Assistants IA</a>
         <a href="tableau-de-bord.html">Tableau de bord</a>
       </nav>
       <div class="nav-actions">
         <button class="theme-toggle" id="theme-toggle" aria-label="Changer de thème">🌙</button>
+        <a href="assistants.html" class="btn btn-primary">Démarrer</a>
       </div>
     </div>
   </header>
 
-  <main>
-    <section class="page-head">
-      <div class="container">
-        <span class="eyebrow">Tuteurs spécialisés</span>
-        <h1>Choisissez votre assistant</h1>
-        <p class="lead">Chaque assistant est calibré pour sa matière&nbsp;: vocabulaire, méthodologie, exemples typiques du programme. Sélectionnez-en un pour commencer à discuter.</p>
-      </div>
-    </section>
-
-    <section class="container">
-      <div class="assistant-grid" id="assistant-list"></div>
-    </section>
+  <main class="container fiche-page">
+    <div id="fiche-container"></div>
   </main>
 
   <footer class="site-footer">
@@ -46,6 +37,6 @@
 
   <script src="data.js"></script>
   <script src="app.js"></script>
-  <script>renderAssistants();</script>
+  <script>renderFiche();</script>
 </body>
 </html>
