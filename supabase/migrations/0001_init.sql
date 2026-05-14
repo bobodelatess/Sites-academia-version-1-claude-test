@@ -117,6 +117,7 @@ returns table (
   page        int,
   position    int,
   text        text,
+  token_count int,
   metadata    jsonb,
   similarity  float
 )
@@ -128,6 +129,7 @@ as $$
     c.page,
     c.position,
     c.text,
+    c.token_count,
     c.metadata,
     1 - (c.embedding <=> query_embedding) as similarity
   from public.chunks c

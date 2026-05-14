@@ -76,6 +76,7 @@ export type MatchChunkResult = {
   page: number;
   position: number;
   text: string;
+  token_count: number;
   metadata: Record<string, unknown>;
   similarity: number;
 };
