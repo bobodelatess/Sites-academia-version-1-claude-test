@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+:root {
+  --background: 250 250 252;
+  --foreground: 14 18 28;
+  --card: 255 255 255;
+  --card-foreground: 14 18 28;
+  --muted: 240 242 247;
+  --muted-foreground: 91 99 120;
+  --border: 226 230 240;
+  --input: 226 230 240;
+  --ring: 99 102 241;
+  --primary: 99 102 241;
+  --primary-foreground: 255 255 255;
+  --accent: 139 92 246;
+  --destructive: 239 68 68;
+}
+
+.dark {
+  --background: 11 13 18;
+  --foreground: 230 233 239;
+  --card: 22 26 35;
+  --card-foreground: 230 233 239;
+  --muted: 28 34 48;
+  --muted-foreground: 152 160 179;
+  --border: 35 41 56;
+  --input: 35 41 56;
+  --ring: 99 102 241;
+  --primary: 99 102 241;
+  --primary-foreground: 255 255 255;
+  --accent: 139 92 246;
+  --destructive: 239 68 68;
+}
+
+@theme inline {
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
+  --color-card: rgb(var(--card));
+  --color-card-foreground: rgb(var(--card-foreground));
+  --color-muted: rgb(var(--muted));
+  --color-muted-foreground: rgb(var(--muted-foreground));
+  --color-border: rgb(var(--border));
+  --color-input: rgb(var(--input));
+  --color-ring: rgb(var(--ring));
+  --color-primary: rgb(var(--primary));
+  --color-primary-foreground: rgb(var(--primary-foreground));
+  --color-accent: rgb(var(--accent));
+  --color-destructive: rgb(var(--destructive));
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: 11 13 18;
+    --foreground: 230 233 239;
+    --card: 22 26 35;
+    --card-foreground: 230 233 239;
+    --muted: 28 34 48;
+    --muted-foreground: 152 160 179;
+    --border: 35 41 56;
+    --input: 35 41 56;
+  }
+}
+
+html,
+body {
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+/* Safe-area-aware viewport for mobile */
+@supports (padding: env(safe-area-inset-bottom)) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
