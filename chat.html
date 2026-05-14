@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat — StudIA</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">S</span>
+        <span class="brand-name">StudIA</span>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html">Accueil</a>
+        <a href="cours.html">Cours</a>
+        <a href="exercices.html">Exercices</a>
+        <a href="assistants.html" class="active">Assistants IA</a>
+      </nav>
+      <a href="assistants.html" class="btn btn-primary">Changer d'assistant</a>
+    </div>
+  </header>
+
+  <main class="chat-page">
+    <aside class="chat-sidebar">
+      <h3>Contexte</h3>
+      <div id="chat-context" class="context-card">
+        <div class="muted">Aucun contexte chargé.</div>
+      </div>
+      <h3>Suggestions</h3>
+      <div id="chat-suggestions" class="suggestions"></div>
+    </aside>
+
+    <section class="chat-main">
+      <div class="chat-header">
+        <div class="assistant-avatar" id="chat-avatar">🤖</div>
+        <div>
+          <div class="chat-name" id="chat-name">Assistant</div>
+          <div class="chat-sub" id="chat-sub">Tuteur IA spécialisé</div>
+        </div>
+      </div>
+      <div class="chat-messages" id="chat-messages"></div>
+      <form class="chat-input" id="chat-form">
+        <input
+          type="text"
+          id="chat-input"
+          placeholder="Posez votre question…"
+          autocomplete="off"
+          required
+        />
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>initChat();</script>
+</body>
+</html>

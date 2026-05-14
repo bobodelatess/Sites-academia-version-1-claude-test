@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assistants IA — StudIA</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">S</span>
+        <span class="brand-name">StudIA</span>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html">Accueil</a>
+        <a href="cours.html">Cours</a>
+        <a href="exercices.html">Exercices</a>
+        <a href="assistants.html" class="active">Assistants IA</a>
+      </nav>
+      <a href="assistants.html" class="btn btn-primary">Démarrer</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <span class="eyebrow">Tuteurs spécialisés</span>
+        <h1>Choisissez votre assistant</h1>
+        <p class="lead">Chaque assistant est calibré pour sa matière&nbsp;: vocabulaire, méthodologie, exemples typiques du programme. Sélectionnez-en un pour commencer à discuter.</p>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="assistant-grid" id="assistant-list"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container copyright">© 2026 StudIA</div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>renderAssistants();</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cours — StudIA</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">S</span>
+        <span class="brand-name">StudIA</span>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html">Accueil</a>
+        <a href="cours.html" class="active">Cours</a>
+        <a href="exercices.html">Exercices</a>
+        <a href="assistants.html">Assistants IA</a>
+      </nav>
+      <a href="assistants.html" class="btn btn-primary">Démarrer</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <span class="eyebrow">Catalogue</span>
+        <h1>Cours</h1>
+        <p class="lead">Parcourez les cours par matière. Chaque fiche peut être ouverte directement dans le chat de son assistant IA.</p>
+      </div>
+    </section>
+
+    <section class="container filters">
+      <div class="filter-row">
+        <input type="search" id="course-search" placeholder="Rechercher un cours, un chapitre…" />
+        <select id="course-subject">
+          <option value="">Toutes les matières</option>
+          <option>Mathématiques</option>
+          <option>Physique-Chimie</option>
+          <option>Français</option>
+          <option>Histoire-Géo</option>
+          <option>SVT</option>
+          <option>Anglais</option>
+          <option>Philosophie</option>
+          <option>Informatique</option>
+        </select>
+        <select id="course-level">
+          <option value="">Tous les niveaux</option>
+          <option>Collège</option>
+          <option>Lycée</option>
+          <option>Supérieur</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="card-grid" id="course-list"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container copyright">© 2026 StudIA</div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>renderCourses();</script>
+</body>
+</html>
