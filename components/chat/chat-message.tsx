@@ -2,6 +2,7 @@
 
 import "katex/dist/katex.min.css";
 
+import { AlertTriangle } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
@@ -60,6 +61,15 @@ export function ChatMessage({ message, onCitationClick }: Props) {
                     onClick={onCitationClick}
                   />
                 ))}
+              </div>
+            ) : null}
+            {message.missingCitations ? (
+              <div className="mt-2 flex items-start gap-1.5 text-[11px] text-amber-600 dark:text-amber-400">
+                <AlertTriangle className="mt-0.5 h-3 w-3 shrink-0" />
+                <span>
+                  Le tuteur n&apos;a référencé aucune source dans sa réponse —
+                  vérifie manuellement avec les extraits ci-dessus.
+                </span>
               </div>
             ) : null}
           </>

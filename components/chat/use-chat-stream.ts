@@ -85,10 +85,15 @@ export function useChatStream() {
             const text = (data as { text: string }).text;
             updateAssistant((m) => ({ ...m, content: m.content + text }));
           } else if (event === "done") {
+            const doneData = data as {
+              conversation_id?: string;
+              missing_citations?: boolean;
+            };
             updateAssistant((m) => ({
               ...m,
               isStreaming: false,
               sources: receivedSources ?? m.sources,
+              missingCitations: doneData.missing_citations === true,
             }));
             setStatus("idle");
             return;

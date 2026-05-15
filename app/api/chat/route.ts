@@ -197,6 +197,17 @@ export async function POST(request: NextRequest) {
             }
           }
 
+          // Sentinelle anti-hallucination : si on a fourni des sources mais
+          // que la réponse n'a aucune citation [N], c'est suspect (le modèle
+          // a peut-être bypassé l'instruction). On loggue + on prévient l'UI.
+          const hasInlineCitations = /\[\d+\]/.test(accumulated);
+          const missingCitations = citations.length > 0 && !hasInlineCitations;
+          if (missingCitations) {
+            console.warn(
+              `[chat] missing citations (conversation=${conversation.id}): ${citations.length} sources fournies, 0 référence inline.`
+            );
+          }
+
           await appendMessage(client, {
             conversation_id: conversation.id,
             role: "assistant",
@@ -205,7 +216,10 @@ export async function POST(request: NextRequest) {
           });
           await touchConversation(client, conversation.id);
 
-          send("done", { conversation_id: conversation.id });
+          send("done", {
+            conversation_id: conversation.id,
+            missing_citations: missingCitations,
+          });
           controller.close();
         } catch (err) {
           console.error("[chat] stream error:", err);

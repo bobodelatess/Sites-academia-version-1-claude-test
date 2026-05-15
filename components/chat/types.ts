@@ -26,4 +26,6 @@ export type ChatMessage = {
   content: string;
   sources?: ChatSource[];
   isStreaming?: boolean;
+  /** Sources fournies mais aucun [N] inline → réponse possiblement non sourcée. */
+  missingCitations?: boolean;
 };

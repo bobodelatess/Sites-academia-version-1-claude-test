@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "retrieve": "tsx --env-file=.env.local scripts/retrieve.ts"
+    "retrieve": "tsx --env-file=.env.local scripts/retrieve.ts",
+    "test:rag": "tsx --env-file=.env.local tests/rag-quality.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.96.0",
