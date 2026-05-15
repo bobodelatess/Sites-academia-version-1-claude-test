@@ -86,12 +86,25 @@ export async function POST(request: NextRequest) {
     // ----- Retrieval -----
     const retrieveResult = await retrieve(body.message);
     const trimmedChunks = trimToBudget(retrieveResult.chunks, CHUNK_TOKEN_BUDGET);
+    // Citations slim, persistées en DB
     const citations: Citation[] = trimmedChunks.map((c, i) => ({
       chunk_id: c.chunk_id,
       document_id: c.document_id,
       page: c.page,
       score: c.score,
       label: String(i + 1),
+    }));
+    // Sources étendues, envoyées via SSE pour que l'UI affiche le
+    // panneau de citation sans round-trip supplémentaire
+    const sources = trimmedChunks.map((c, i) => ({
+      label: String(i + 1),
+      chunk_id: c.chunk_id,
+      document_id: c.document_id,
+      document_title: c.document_title,
+      document_type: c.document_type,
+      page: c.page,
+      score: c.score,
+      text: c.text,
     }));
 
     // ----- Historique (avant de persister le message courant) -----
@@ -122,7 +135,7 @@ export async function POST(request: NextRequest) {
         try {
           send("meta", {
             conversation_id: conversation.id,
-            citations,
+            sources,
             below_threshold: retrieveResult.belowThreshold,
           });
 
