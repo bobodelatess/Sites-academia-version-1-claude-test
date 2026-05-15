@@ -22,7 +22,7 @@ const TYPE_OPTIONS: { value: DocumentTypeT; label: string }[] = [
 ];
 
 type Props = {
-  onUploaded: (result: UploadResult) => void;
+  onUploaded: () => void;
 };
 
 export function DocumentUploader({ onUploaded }: Props) {
@@ -54,7 +54,7 @@ export function DocumentUploader({ onUploaded }: Props) {
       setProgress(
         `OK : ${result.chunk_count} chunks sur ${result.page_count} pages.`
       );
-      onUploaded(result);
+      onUploaded();
       formRef.current?.reset();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erreur inconnue");

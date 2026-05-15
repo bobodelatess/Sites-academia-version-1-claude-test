@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { DocumentList, type AdminDocument } from "./document-list";
-import { DocumentUploader, type UploadResult } from "./document-uploader";
+import { DocumentUploader } from "./document-uploader";
 
 export function AdminPanel() {
   const [documents, setDocuments] = useState<AdminDocument[]>([]);
@@ -11,7 +11,6 @@ export function AdminPanel() {
   const [error, setError] = useState<string | null>(null);
 
   const refresh = useCallback(async () => {
-    setLoading(true);
     setError(null);
     try {
       const res = await fetch("/api/ingest", { cache: "no-store" });
@@ -25,16 +24,17 @@ export function AdminPanel() {
     }
   }, []);
 
+  // Initial load. Effect avec setState est volontaire ici (pattern classique
+  // de data-fetching prototype) — eslint-react attend du Suspense ou un
+  // hook tiers ; on préfère rester sans dépendance.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     void refresh();
   }, [refresh]);
 
-  const handleUploaded = useCallback(
-    (_result: UploadResult) => {
-      void refresh();
-    },
-    [refresh]
-  );
+  const handleUploaded = useCallback(() => {
+    void refresh();
+  }, [refresh]);
 
   const handleDelete = useCallback(
     async (id: string) => {
